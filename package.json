@@ -1,0 +1,26 @@
+{
+  "name": "bill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run frontend\" \"npm run electron\"",
+    "server": "node server.js",
+    "frontend": "cd client && npm run dev",
+    "electron": "electron .",
+    "build": "cd client && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "electron": "^37.2.6",
+    "express": "^5.1.0",
+    "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0"
+  }
+}
