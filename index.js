@@ -1,5 +1,5 @@
-const { app, BrowserWindow } = require('electron');
-const path = require('path');
+import { app, BrowserWindow } from 'electron';
+import { join } from 'path';
 const isDev = !app.isPackaged;
 
 function createWindow() {
@@ -15,7 +15,7 @@ function createWindow() {
   if (isDev) {
     win.loadURL('http://localhost:5173'); // Vite dev server
   } else {
-    win.loadFile(path.join(__dirname, 'client/dist/index.html')); // Vite build output
+    win.loadFile(join(__dirname, 'client/dist/index.html')); // Vite build output
   }
 }
 
