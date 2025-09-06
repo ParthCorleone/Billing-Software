@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import ProductForm from './components/ProductForm';
-import BillSummary from './components/BillSummary';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import HomePage from './pages/HomePage';
+import BillingPage from './pages/BillingPage';
+import InventoryPage from './pages/InventoryPage';
+import BillsListPage from './pages/BillsListPage';
 
-export default function App() {
-  const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
-
+function App() {
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <h1 className="text-3xl font-bold text-center mb-6">🧾 Billing Software</h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <ProductForm
-          products={products}
-          setProducts={setProducts}
-          cart={cart}
-          setCart={setCart}
-        />
-        <BillSummary
-          cart={cart}
-          setCart={setCart}
-        />
+    <Router>
+      <div className="min-h-screen bg-gray-100">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/billing" element={<BillingPage />} />
+            <Route path="/inventory" element={<InventoryPage />} />
+            <Route path="/bills" element={<BillsListPage />} />
+          </Routes>
+        </main>
       </div>
-    </div>
+    </Router>
   );
 }
+
+export default App;

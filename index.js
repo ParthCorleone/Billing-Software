@@ -7,15 +7,15 @@ function createWindow() {
     width: 1200,
     height: 800,
     webPreferences: {
-      nodeIntegration: false, // for security
-      contextIsolation: true, // recommended
+      nodeIntegration: false,
+      contextIsolation: true,
     },
   });
 
   if (isDev) {
-    win.loadURL('http://localhost:5173'); // Vite dev server
+    win.loadURL('http://localhost:5173');
   } else {
-    win.loadFile(join(__dirname, 'client/dist/index.html')); // Vite build output
+    win.loadFile(join(__dirname, 'client/dist/index.html'));
   }
 }
 

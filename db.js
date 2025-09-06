@@ -68,9 +68,22 @@ db.serialize(() => {
       bill_id INTEGER NOT NULL,
       service_id INTEGER NOT NULL,
       quantity INTEGER NOT NULL DEFAULT 1,
+      discount_percent REAL DEFAULT 0,
+      gst_percent REAL DEFAULT 0,
       price_at_sale REAL NOT NULL, -- The price charged for the service on this bill
       FOREIGN KEY (bill_id) REFERENCES bills (id) ON DELETE CASCADE,
       FOREIGN KEY (service_id) REFERENCES services (id)
+    )
+  `);
+
+  db.run(`
+    CREATE TABLE IF NOT EXISTS payments (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      bill_id INTEGER NOT NULL,
+      amount_paid REAL NOT NULL,
+      payment_date TEXT NOT NULL,
+      payment_type TEXT NOT NULL, -- e.g., 'Cash', 'UPI', 'Card'
+      FOREIGN KEY (bill_id) REFERENCES bills (id) ON DELETE CASCADE
     )
   `);
 
